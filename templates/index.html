@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Ollama Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=20261030-3">
+  </head>
+  <body>
+    <main class="chat-shell">
+      <header>
+        <h1>Local Ollama Chat</h1>
+        <p>Model: <code>{{ model }}</code></p>
+      </header>
+
+      <nav class="tabs" aria-label="Application sections">
+        <button class="tab active" type="button" data-tab="chat" aria-selected="true">Chat</button>
+        <button class="tab" type="button" data-tab="documents" aria-selected="false">Document collection</button>
+      </nav>
+
+      <section id="chat-panel" class="tab-panel">
+        <section id="messages" class="messages" aria-live="polite">
+          <div class="message assistant">Hi! Ask me anything.</div>
+        </section>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="prompt">Message</label>
+          <textarea id="prompt" rows="1" placeholder="Write a message..." required></textarea>
+          <label class="search-toggle" title="Let the model search the web when needed"><input id="web-search" type="checkbox"> Web search</label>
+          <button id="send-button" type="submit">Send</button>
+        </form>
+        <div id="chat-document-summary" class="chat-document-summary" aria-live="polite"></div>
+      </section>
+
+      <section id="documents-panel" class="tab-panel hidden">
+        <div class="collection-content">
+          <h2>Add documents</h2>
+          <form id="upload-form" class="upload-form">
+            <label class="file-picker" for="document-input">Choose files</label>
+            <input id="document-input" type="file" accept=".pdf,.docx,.txt,.md,text/plain,text/markdown,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple>
+            <span id="file-selection" class="file-selection">No files selected</span>
+            <button id="upload-button" type="submit">Upload</button>
+          </form>
+          <p id="upload-status" class="upload-status" role="status"></p>
+          <p class="upload-help">PDF, DOCX, TXT, or Markdown. Maximum size: 10 MB per file. Uploads are kept locally for chat.</p>
+          <div class="collection-heading"><h2>Your files</h2><span id="document-count">0 files</span></div>
+          <div id="document-list" class="document-list" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}?v=20261030-3"></script>
+  </body>
+</html>

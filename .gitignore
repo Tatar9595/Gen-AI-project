@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.py[cod]
+flask.log
+flask-error.log
+.env
+.env.*

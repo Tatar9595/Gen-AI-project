@@ -1,0 +1,48 @@
+:root { color-scheme: light; font-family: Inter, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #f4f6f8; color: #17212b; display: grid; place-items: center; padding: 1.5rem; }
+.chat-shell { width: min(760px, 100%); height: min(760px, calc(100vh - 3rem)); background: #fff; border: 1px solid #dde3ea; border-radius: 16px; box-shadow: 0 12px 32px #17212b18; display: flex; flex-direction: column; overflow: hidden; }
+header { padding: 1.25rem 1.5rem; border-bottom: 1px solid #e7ebef; }
+h1 { margin: 0; font-size: 1.2rem; }
+header p { margin: .3rem 0 0; color: #637083; font-size: .9rem; }
+.tabs { display: flex; gap: 1rem; padding: 0 1.5rem; border-bottom: 1px solid #e7ebef; }
+.tab { padding: .8rem 0 .65rem; background: none; border: 0; border-radius: 0; color: #637083; font-size: .9rem; }
+.tab.active { color: #48784d; border-bottom: 2px solid #5f8964; }
+.tab-panel { min-height: 0; flex: 1; display: flex; flex-direction: column; }
+.tab-panel.hidden { display: none; }
+.messages { flex: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: .75rem; }
+.message { max-width: 82%; padding: .7rem .9rem; border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.45; }
+.assistant { align-self: flex-start; background: #edf1f5; }
+.user { align-self: flex-end; background: #1c6ed5; color: #fff; }
+.message a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.assistant a { color: #095cbb; }
+.error { background: #fff0f0; color: #a61b1b; border: 1px solid #ffc9c9; }
+.composer { border-top: 1px solid #e7ebef; padding: 1rem; display: flex; gap: .75rem; }
+textarea { flex: 1; resize: vertical; min-height: 42px; max-height: 180px; padding: .65rem .75rem; border: 1px solid #b8c2ce; border-radius: 9px; font: inherit; }
+.upload-button, .composer button, .upload-form button { border: 0; border-radius: 9px; background: #1c6ed5; color: #fff; padding: 0 1rem; font: inherit; font-weight: 600; cursor: pointer; display: grid; place-items: center; }
+.search-toggle { align-self: center; color: #445264; font-size: .85rem; white-space: nowrap; }
+.search-toggle input { accent-color: #1c6ed5; }
+button:disabled, textarea:disabled { opacity: .6; cursor: wait; }
+#document-input { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.file-picker:focus-within { outline: 2px solid #1c6ed5; outline-offset: 2px; }
+.chat-document-summary { color: #637083; font-size: .8rem; padding: 0 1rem 1rem; }
+.collection-content { overflow-y: auto; padding: 1.5rem; }
+.collection-content h2 { font-size: 1rem; margin: 0 0 .8rem; }
+.upload-form { display: flex; align-items: center; gap: .7rem; }
+.file-picker { border: 1px solid #b8c2ce; border-radius: 7px; cursor: pointer; padding: .55rem .7rem; font-size: .9rem; }
+.file-selection { flex: 1; color: #637083; font-size: .85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.upload-form button { height: 38px; background: #5f8964; }
+.upload-help { color: #87919e; font-size: .8rem; margin: .7rem 0 1.7rem; }
+.upload-status { min-height: 1.2em; color: #48784d; font-size: .82rem; margin: .55rem 0 0; }
+.error-text { color: #a61b1b; }
+.collection-heading { display: flex; justify-content: space-between; align-items: baseline; }
+.collection-heading span { color: #87919e; font-size: .8rem; }
+.document-list { border-top: 1px solid #e7ebef; }
+.document-item { align-items: center; border-bottom: 1px solid #e7ebef; display: flex; justify-content: space-between; padding: .8rem 0; }
+.document-item .document-link, .document-item span { display: block; }
+.document-link { color: #48784d; font-size: .9rem; font-weight: 700; text-decoration: none; }
+.document-link:hover, .document-link:focus-visible { text-decoration: underline; }
+.document-item span { color: #87919e; font-size: .78rem; margin-top: .15rem; }
+.delete-button { background: #fff0f0; color: #a61b1b; font-size: .75rem; height: 32px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+@media (max-width: 560px) { body { padding: 0; } .chat-shell { height: 100vh; border-radius: 0; border: 0; } .composer { padding: .75rem; } }
